@@ -6,6 +6,7 @@ export function Books() {
     'Psychology of Money',
     'The Hard Thing About Hard Things',
     'No Rules Rules',
+    'Atomic Habits',
   ]);
 
   return (
