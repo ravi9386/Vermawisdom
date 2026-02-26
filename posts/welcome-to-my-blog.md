@@ -5,7 +5,7 @@ category: General
 excerpt: An introduction to my personal blog where I share thoughts on technology and life.
 ---
 
-# Welcome to Verma Wisdone
+# Welcome to Verma Wisdom
 
 Hello and welcome to my personal blog! I'm excited to share my thoughts, experiences, and insights with you on topics I'm passionate about.
 

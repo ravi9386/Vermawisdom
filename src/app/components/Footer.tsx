@@ -8,7 +8,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           {/* About Section */}
           <div>
-            <h3 className="text-white font-bold text-lg mb-4">Verma Wisdone</h3>
+            <h3 className="text-white font-bold text-lg mb-4">Verma Wisdom</h3>
             <p className="text-sm leading-relaxed">
               A platform for sharing thoughts, stories, and ideas with the world.
             </p>
@@ -48,7 +48,7 @@ export function Footer() {
               <li className="flex items-center gap-2">
                 <Mail className="w-4 h-4" />
                 <a
-                  href="mailto:contact@vermawisdone.com"
+                  href="mailto:contact@vermawisdom.com"
                   className="hover:text-white transition-colors"
                 >
                   contact@vermawisdone.com

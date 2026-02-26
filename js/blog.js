@@ -1,6 +1,6 @@
 // Blog Configuration
 const BLOG_CONFIG = {
-    siteName: 'Verma Wisdone',
+    siteName: 'Verma Wisdom',
     siteDescription: 'Thoughts on technology, life, and everything in between',
     postDirectory: '/posts',
 };
