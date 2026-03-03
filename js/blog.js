@@ -145,6 +145,7 @@ async function initBlog() {
         'welcome-to-my-blog.md',
         'javascript-tips.md',
         'learning-web-development.md',
+        'personal-finance-essentials.md',
     ];
 
     try {
