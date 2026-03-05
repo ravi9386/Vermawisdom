@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retirement Calculator - Verma Wisdom</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="/" class="logo">Verma Wisdom</a>
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/retirement-calculator.html">Retirement Calculator</a></li>
+                    <li><a href="/#about">About</a></li>
+                    <li><a href="/#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" style="padding:3rem 2rem; margin-bottom:2rem;">
+            <div class="container">
+                <h1>Retirement Calculator</h1>
+                <p>Estimate retirement age, corpus required, and monthly investment needs.</p>
+            </div>
+        </section>
+
+        <section class="blog-section" style="margin-bottom:2rem;">
+            <div class="container" style="display:block; max-width:900px;">
+                <div class="categories" style="margin-bottom:1.5rem;">
+                    <h3>Inputs</h3>
+                    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem;">
+                        <label>Current Age
+                            <input id="currentAge" type="number" value="32" style="width:100%; padding:.6rem; margin-top:.3rem; border:1px solid #ddd; border-radius:6px;">
+                        </label>
+                        <label>Target Life Expectancy
+                            <input id="lifeAge" type="number" value="85" style="width:100%; padding:.6rem; margin-top:.3rem; border:1px solid #ddd; border-radius:6px;">
+                        </label>
+                        <label>Current Monthly Income (₹)
+                            <input id="income" type="number" value="200000" style="width:100%; padding:.6rem; margin-top:.3rem; border:1px solid #ddd; border-radius:6px;">
+                        </label>
+                        <label>Current Monthly Expense (₹)
+                            <input id="expense" type="number" value="90000" style="width:100%; padding:.6rem; margin-top:.3rem; border:1px solid #ddd; border-radius:6px;">
+                        </label>
+                        <label>Current Savings Corpus (₹)
+                            <input id="corpus" type="number" value="1500000" style="width:100%; padding:.6rem; margin-top:.3rem; border:1px solid #ddd; border-radius:6px;">
+                        </label>
+                        <label>Pre-Retirement ROI (% p.a.)
+                            <input id="preROI" type="number" value="11" step="0.1" style="width:100%; padding:.6rem; margin-top:.3rem; border:1px solid #ddd; border-radius:6px;">
+                        </label>
+                        <label>Post-Retirement ROI (% p.a.)
+                            <input id="postROI" type="number" value="7.5" step="0.1" style="width:100%; padding:.6rem; margin-top:.3rem; border:1px solid #ddd; border-radius:6px;">
+                        </label>
+                        <label>Inflation (% p.a.)
+                            <input id="inflation" type="number" value="6" step="0.1" style="width:100%; padding:.6rem; margin-top:.3rem; border:1px solid #ddd; border-radius:6px;">
+                        </label>
+                        <label>Income Growth (% p.a.)
+                            <input id="incomeGrowth" type="number" value="8" step="0.1" style="width:100%; padding:.6rem; margin-top:.3rem; border:1px solid #ddd; border-radius:6px;">
+                        </label>
+                        <label>Safe Withdrawal Rate (% p.a.)
+                            <input id="swr" type="number" value="4" step="0.1" style="width:100%; padding:.6rem; margin-top:.3rem; border:1px solid #ddd; border-radius:6px;">
+                        </label>
+                    </div>
+                    <button onclick="calculateRetirement()" style="margin-top:1rem; background:var(--accent-color); color:#fff; border:none; padding:.7rem 1.2rem; border-radius:6px; cursor:pointer;">Calculate</button>
+                </div>
+
+                <div class="categories">
+                    <h3>Results</h3>
+                    <div id="result" style="font-size:1rem; color:#444; line-height:1.8;">Enter values and click Calculate.</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Verma Wisdom. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function formatINR(v) {
+            return new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(v);
+        }
+
+        function calculateRetirement() {
+            const currentAge = Number(document.getElementById('currentAge').value);
+            const lifeAge = Number(document.getElementById('lifeAge').value);
+            const monthlyIncome = Number(document.getElementById('income').value);
+            const monthlyExpense = Number(document.getElementById('expense').value);
+            const startingCorpus = Number(document.getElementById('corpus').value);
+            const preROI = Number(document.getElementById('preROI').value) / 100;
+            const postROI = Number(document.getElementById('postROI').value) / 100;
+            const inflation = Number(document.getElementById('inflation').value) / 100;
+            const incomeGrowth = Number(document.getElementById('incomeGrowth').value) / 100;
+            const swr = Number(document.getElementById('swr').value) / 100;
+
+            let annualIncome = monthlyIncome * 12;
+            let annualExpense = monthlyExpense * 12;
+            let corpus = Math.max(0, startingCorpus);
+            let retirementAge = null;
+            let requiredCorpus = 0;
+
+            for (let age = currentAge; age <= 80; age++) {
+                const annualSavings = Math.max(annualIncome - annualExpense, 0);
+                corpus = corpus * (1 + preROI) + annualSavings;
+
+                const retirementExpense = annualExpense * 0.85;
+                const yearsInRetirement = Math.max(1, lifeAge - (age + 1));
+                const withdrawalNeed = retirementExpense / Math.max(0.01, swr);
+                const realPostReturn = (1 + postROI) / (1 + inflation) - 1;
+                const durationNeed = Math.abs(realPostReturn) < 0.0001
+                    ? retirementExpense * yearsInRetirement
+                    : retirementExpense * ((1 - Math.pow(1 + realPostReturn, -yearsInRetirement)) / realPostReturn);
+
+                requiredCorpus = Math.max(withdrawalNeed, durationNeed);
+
+                if (corpus >= requiredCorpus) {
+                    retirementAge = age + 1;
+                    break;
+                }
+
+                annualIncome = annualIncome * (1 + incomeGrowth);
+                annualExpense = annualExpense * (1 + inflation);
+            }
+
+            const annualSavingsNow = Math.max(monthlyIncome - monthlyExpense, 0) * 12;
+            const savingsRate = monthlyIncome > 0 ? ((monthlyIncome - monthlyExpense) / monthlyIncome) * 100 : 0;
+
+            document.getElementById('result').innerHTML = `
+                <p><strong>Recommended Retirement Age:</strong> ${retirementAge ? retirementAge : '80+'}</p>
+                <p><strong>Required Retirement Corpus:</strong> ${formatINR(requiredCorpus)}</p>
+                <p><strong>Current Annual Savings:</strong> ${formatINR(annualSavingsNow)}</p>
+                <p><strong>Current Savings Rate:</strong> ${savingsRate.toFixed(1)}%</p>
+                <p><strong>Projected Corpus (at recommendation loop):</strong> ${formatINR(corpus)}</p>
+                <p style="margin-top:.7rem;"><em>Note: This is an estimate based on your assumptions and does not constitute financial advice.</em></p>
+            `;
+        }
+
+        calculateRetirement();
+    </script>
+</body>
+</html>
