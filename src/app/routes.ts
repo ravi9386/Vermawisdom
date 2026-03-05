@@ -4,6 +4,7 @@ import { CreatePost } from "./pages/CreatePost";
 import { BlogPost } from "./pages/BlogPost";
 import { About } from "./pages/About";
 import { PersonalFinance } from "./pages/PersonalFinance";
+import { RetirementCalculator } from "./pages/RetirementCalculator";
 
 export const router = createBrowserRouter([
   {
@@ -25,5 +26,9 @@ export const router = createBrowserRouter([
   {
     path: "/pf",
     Component: PersonalFinance,
+  },
+  {
+    path: "/retirement-calculator",
+    Component: RetirementCalculator,
   },
 ]);

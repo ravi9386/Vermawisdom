@@ -14,6 +14,18 @@ export function Sidebar() {
 
   return (
     <aside className="w-64 bg-white dark:bg-slate-800 shadow-md border-r border-cyan-200 dark:border-cyan-700 p-6">
+      <div className="mb-6 pb-4 border-b border-cyan-200 dark:border-cyan-700">
+        <h2 className="text-base font-semibold text-gray-800 dark:text-gray-100 mb-2">Tools</h2>
+        <Link to="/retirement-calculator">
+          <div className="p-3 bg-cyan-50 dark:bg-indigo-900 rounded-lg hover:bg-cyan-100 dark:hover:bg-indigo-800 transition-colors cursor-pointer border border-cyan-200 dark:border-cyan-700">
+            <h3 className="font-medium text-sm text-cyan-700 dark:text-cyan-300 truncate">
+              Retirement Calculator
+            </h3>
+            <p className="text-xs text-gray-600 dark:text-gray-300 mt-1">Income, expense, ROI & age planning</p>
+          </div>
+        </Link>
+      </div>
+
       <h2 className="text-xl font-bold bg-gradient-to-r from-cyan-600 to-indigo-600 dark:from-cyan-400 dark:to-indigo-400 bg-clip-text text-transparent mb-6">
         My Blogs
       </h2>

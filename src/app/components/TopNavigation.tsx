@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { Home, Compass, Users, User, Wallet } from "lucide-react";
+import { Home, Users, User, Wallet, Calculator } from "lucide-react";
 
 export function TopNavigation() {
   return (
@@ -24,6 +24,14 @@ export function TopNavigation() {
           >
             <Wallet className="w-5 h-5" />
             <span>Personal Finance</span>
+          </Link>
+
+          <Link
+            to="/retirement-calculator"
+            className="flex items-center gap-2 text-gray-700 dark:text-gray-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors font-medium"
+          >
+            <Calculator className="w-5 h-5" />
+            <span>Retirement</span>
           </Link>
 
           <Link
