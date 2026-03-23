@@ -26,19 +26,19 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-cyan-400 transition-colors">
-                  Explore
-                </a>
+                <Link to="/pf" className="hover:text-cyan-400 transition-colors">
+                  Personal Finance
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-cyan-400 transition-colors">
-                  Collab
-                </a>
+                <Link to="/retirement-calculator" className="hover:text-cyan-400 transition-colors">
+                  Retirement Calculator
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-cyan-400 transition-colors">
+                <Link to="/about" className="hover:text-cyan-400 transition-colors">
                   About
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
