@@ -3,6 +3,7 @@ import { Home } from "./pages/Home";
 import { CreatePost } from "./pages/CreatePost";
 import { BlogPost } from "./pages/BlogPost";
 import { About } from "./pages/About";
+import { Contact } from "./pages/Contact";
 import { PersonalFinance } from "./pages/PersonalFinance";
 import { RetirementCalculator } from "./pages/RetirementCalculator";
 
@@ -22,6 +23,10 @@ export const router = createBrowserRouter([
   {
     path: "/about",
     Component: About,
+  },
+  {
+    path: "/contact",
+    Component: Contact,
   },
   {
     path: "/pf",
