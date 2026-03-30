@@ -148,6 +148,7 @@ async function initBlog() {
         'personal-finance-essentials.md',
         'industry-trends.md',
         'agentic-software-development.md',
+        'geopolitics-and-global-order.md',
     ];
 
     try {
