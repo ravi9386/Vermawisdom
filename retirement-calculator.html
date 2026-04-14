@@ -103,27 +103,42 @@
             let retirementAge = null;
             let requiredCorpus = 0;
 
-            for (let age = currentAge; age <= 80; age++) {
-                const annualSavings = Math.max(annualIncome - annualExpense, 0);
-                corpus = corpus * (1 + preROI) + annualSavings;
+            // Check if can retire immediately
+            const retirementExpenseNow = annualExpense * 0.85;
+            const yearsInRetirementNow = Math.max(1, lifeAge - currentAge);
+            const withdrawalNeedNow = retirementExpenseNow / Math.max(0.01, swr);
+            const realPostReturnNow = (1 + postROI) / (1 + inflation) - 1;
+            const durationNeedNow = Math.abs(realPostReturnNow) < 0.0001
+                ? retirementExpenseNow * yearsInRetirementNow
+                : retirementExpenseNow * ((1 - Math.pow(1 + realPostReturnNow, -yearsInRetirementNow)) / realPostReturnNow);
+            const requiredCorpusNow = Math.max(withdrawalNeedNow, durationNeedNow);
 
-                const retirementExpense = annualExpense * 0.85;
-                const yearsInRetirement = Math.max(1, lifeAge - (age + 1));
-                const withdrawalNeed = retirementExpense / Math.max(0.01, swr);
-                const realPostReturn = (1 + postROI) / (1 + inflation) - 1;
-                const durationNeed = Math.abs(realPostReturn) < 0.0001
-                    ? retirementExpense * yearsInRetirement
-                    : retirementExpense * ((1 - Math.pow(1 + realPostReturn, -yearsInRetirement)) / realPostReturn);
+            if (corpus >= requiredCorpusNow) {
+                retirementAge = currentAge;
+                requiredCorpus = requiredCorpusNow;
+            } else {
+                for (let age = currentAge; age <= 80; age++) {
+                    const annualSavings = Math.max(annualIncome - annualExpense, 0);
+                    corpus = corpus * (1 + preROI) + annualSavings;
 
-                requiredCorpus = Math.max(withdrawalNeed, durationNeed);
+                    const retirementExpense = annualExpense * 0.85;
+                    const yearsInRetirement = Math.max(1, lifeAge - (age + 1));
+                    const withdrawalNeed = retirementExpense / Math.max(0.01, swr);
+                    const realPostReturn = (1 + postROI) / (1 + inflation) - 1;
+                    const durationNeed = Math.abs(realPostReturn) < 0.0001
+                        ? retirementExpense * yearsInRetirement
+                        : retirementExpense * ((1 - Math.pow(1 + realPostReturn, -yearsInRetirement)) / realPostReturn);
 
-                if (corpus >= requiredCorpus) {
-                    retirementAge = age + 1;
-                    break;
+                    requiredCorpus = Math.max(withdrawalNeed, durationNeed);
+
+                    if (corpus >= requiredCorpus) {
+                        retirementAge = age + 1;
+                        break;
+                    }
+
+                    annualIncome = annualIncome * (1 + incomeGrowth);
+                    annualExpense = annualExpense * (1 + inflation);
                 }
-
-                annualIncome = annualIncome * (1 + incomeGrowth);
-                annualExpense = annualExpense * (1 + inflation);
             }
 
             const annualSavingsNow = Math.max(monthlyIncome - monthlyExpense, 0) * 12;

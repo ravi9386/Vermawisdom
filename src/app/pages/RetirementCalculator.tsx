@@ -52,31 +52,47 @@ export function RetirementCalculator() {
     let recommendedRetirementAge: number | null = null;
     let requiredCorpusAtRetirement = 0;
 
-    for (let age = safeCurrentAge; age <= 80; age++) {
-      const annualSavings = Math.max(annualIncome - annualExpense, 0);
-      corpus = corpus * (1 + safePreRoi) + annualSavings;
+    // Check if can retire immediately
+    const retirementExpenseNow = annualExpense * safeRetExpenseRatio;
+    const yearsInRetirementNow = Math.max(1, safeLifeExpectancy - safeCurrentAge);
+    const corpusByWithdrawalRuleNow = retirementExpenseNow / safeWithdrawal;
+    const realReturnPostNow = (1 + safePostRoi) / (1 + safeInflation) - 1;
+    const corpusByDurationNow =
+      Math.abs(realReturnPostNow) < 0.0001
+        ? retirementExpenseNow * yearsInRetirementNow
+        : retirementExpenseNow * ((1 - Math.pow(1 + realReturnPostNow, -yearsInRetirementNow)) / realReturnPostNow);
+    const requiredCorpusNow = Math.max(corpusByWithdrawalRuleNow, corpusByDurationNow);
 
-      const ageAtRetirement = age + 1;
-      const retirementExpense = annualExpense * safeRetExpenseRatio;
-      const yearsInRetirement = Math.max(1, safeLifeExpectancy - ageAtRetirement);
+    if (corpus >= requiredCorpusNow) {
+      recommendedRetirementAge = safeCurrentAge;
+      requiredCorpusAtRetirement = requiredCorpusNow;
+    } else {
+      for (let age = safeCurrentAge; age <= 80; age++) {
+        const annualSavings = Math.max(annualIncome - annualExpense, 0);
+        corpus = corpus * (1 + safePreRoi) + annualSavings;
 
-      const corpusByWithdrawalRule = retirementExpense / safeWithdrawal;
-      const realReturnPost = (1 + safePostRoi) / (1 + safeInflation) - 1;
-      const corpusByDuration =
-        Math.abs(realReturnPost) < 0.0001
-          ? retirementExpense * yearsInRetirement
-          : retirementExpense * ((1 - Math.pow(1 + realReturnPost, -yearsInRetirement)) / realReturnPost);
+        const ageAtRetirement = age + 1;
+        const retirementExpense = annualExpense * safeRetExpenseRatio;
+        const yearsInRetirement = Math.max(1, safeLifeExpectancy - ageAtRetirement);
 
-      const requiredCorpus = Math.max(corpusByWithdrawalRule, corpusByDuration);
+        const corpusByWithdrawalRule = retirementExpense / safeWithdrawal;
+        const realReturnPost = (1 + safePostRoi) / (1 + safeInflation) - 1;
+        const corpusByDuration =
+          Math.abs(realReturnPost) < 0.0001
+            ? retirementExpense * yearsInRetirement
+            : retirementExpense * ((1 - Math.pow(1 + realReturnPost, -yearsInRetirement)) / realReturnPost);
 
-      if (corpus >= requiredCorpus) {
-        recommendedRetirementAge = ageAtRetirement;
-        requiredCorpusAtRetirement = requiredCorpus;
-        break;
+        const requiredCorpus = Math.max(corpusByWithdrawalRule, corpusByDuration);
+
+        if (corpus >= requiredCorpus) {
+          recommendedRetirementAge = ageAtRetirement;
+          requiredCorpusAtRetirement = requiredCorpus;
+          break;
+        }
+
+        annualIncome = annualIncome * (1 + safeIncomeGrowth);
+        annualExpense = annualExpense * (1 + safeInflation);
       }
-
-      annualIncome = annualIncome * (1 + safeIncomeGrowth);
-      annualExpense = annualExpense * (1 + safeInflation);
     }
 
     const yearsLeft = recommendedRetirementAge ? Math.max(0, recommendedRetirementAge - safeCurrentAge) : null;
