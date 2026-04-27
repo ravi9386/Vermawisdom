@@ -1,0 +1,7 @@
+# Ensure JavaScript modules are served with the correct MIME type.
+# Some web servers default to `application/octet-stream` which triggers
+# the strict MIME type checking error in modern browsers.
+
+<IfModule mod_mime.c>
+    AddType application/javascript .js .mjs
+</IfModule>

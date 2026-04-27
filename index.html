@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verma Wisdom - Personal Blog</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="/" class="logo">Verma Wisdom</a>
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/retirement-calculator.html">Retirement Calculator</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Welcome to Verma Wisdom</h1>
+                <p>Thoughts on technology, life, and everything in between</p>
+            </div>
+        </section>
+
+        <section class="blog-section">
+            <div class="container">
+                <div class="sidebar">
+                    <div class="categories">
+                        <h3>Categories</h3>
+                        <ul id="categories-list"></ul>
+                        <div style="margin-top:1rem; padding-top:1rem; border-top:1px solid var(--border-color);">
+                            <a href="/retirement-calculator.html" style="display:inline-block; font-weight:600;">Retirement Calculator</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="posts-container">
+                    <div id="posts-list" class="posts-grid"></div>
+                </div>
+                <!-- books list on the right side -->
+                <div class="books">
+                    <div class="books-section">
+                        <h3>Books I Read</h3>
+                        <ul id="books-list">
+                            <li>Psychology of Money</li>
+                            <li>The Hard Thing About Hard Things</li>
+                            <li>No Rules Rules</li>
+                            <li>Atomic Habits</li>
+                            <li>Intelligent Investor</li>
+                            <li>Deep Work</li>
+                            <li>Art of Spending Money</li>
+                            <li>Just Keep Buying</li>
+                            <li>Think Again</li>
+                        </ul>
+                    </div>
+                </div>            </div>
+        </section>
+
+        <section id="about" class="about-section">
+            <div class="container">
+                <h2>About Me</h2>
+                <p>I am a consulting leader focused on digital transformation at the intersection of digital commerce and generative AI. I translate emerging technology into practical operating-model change—helping organizations modernize customer journeys, strengthen data and platform foundations, and unlock measurable growth. I'm comfortable moving from strategy to execution: shaping roadmaps, defining target-state architecture, aligning stakeholders, and setting governance so programs actually land. In commerce work, I emphasize frictionless experiences, personalization, and scalable content and product data, while keeping an eye on profitability and simplification. In GenAI, I lean toward responsible adoption—prioritizing use cases with clear value, designing human-in-the-loop workflows, and building the controls that make leaders confident. My style is structured and decision-oriented: I clarify objectives, surface trade-offs, and push for the next concrete step. I also value crisp communication—turning complexity into executive-ready narratives, playbooks, and actionable plans for teams. Overall, I'm positioned as a pragmatic transformer: part technologist, part business translator, and part change leader, focused on outcomes rather than hype. I thrive in ambiguous situations, using hypotheses and experiments to learn fast. I build coalitions across product, marketing, engineering, and risk, and I measure success with KPIs tied to customer value.</p>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <h2>Get In Touch</h2>
+                <p>Have a question or want to collaborate? Fill out the form below and I'll get back to you.</p>
+
+                <form class="contact-form" action="https://formsubmit.co/YOUR_EMAIL@HERE.COM" method="POST">
+                    <!-- Formsubmit configuration -->
+                    <input type="hidden" name="_subject" value="New message from Verma Wisdom contact form">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="contact-name">Full Name *</label>
+                            <input type="text" id="contact-name" name="name" placeholder="Your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-email">Email Address *</label>
+                            <input type="email" id="contact-email" name="email" placeholder="your@email.com" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contact-cell">Cell / Phone Number</label>
+                        <input type="tel" id="contact-cell" name="cell" placeholder="+1 (555) 000-0000">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contact-message">Your Message *</label>
+                        <textarea id="contact-message" name="message" rows="5" placeholder="Write your query or message here..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="contact-submit-btn">Send Message</button>
+                </form>
+
+                <div class="contact-links">
+                    <a href="https://twitter.com" target="_blank">Twitter</a>
+                    <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Verma Wisdom. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="js/blog.js"></script>
+</body>
+</html>
