@@ -1,5 +1,13 @@
 import { Link, useParams } from "react-router";
 import { ArrowLeft } from "lucide-react";
+import { useEffect } from "react";
+
+// Declare Razorpay types
+declare global {
+  interface Window {
+    Razorpay: any;
+  }
+}
 
 const products = [
   {
@@ -48,18 +56,49 @@ export default function ProductDetail() {
   const { id } = useParams();
   const product = products.find(p => p.id === parseInt(id || "0"));
 
-  if (!product) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-cyan-50 to-indigo-50 dark:from-slate-900 dark:to-indigo-900 flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Product Not Found</h1>
-          <Link to="/ecommerce" className="text-cyan-600 dark:text-cyan-400 hover:underline">
-            Back to Products
-          </Link>
-        </div>
-      </div>
-    );
-  }
+  useEffect(() => {
+    // Load Razorpay script
+    const script = document.createElement('script');
+    script.src = 'https://checkout.razorpay.com/v1/checkout.js';
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+      // Cleanup script on unmount
+      const existingScript = document.querySelector('script[src="https://checkout.razorpay.com/v1/checkout.js"]');
+      if (existingScript) {
+        document.body.removeChild(existingScript);
+      }
+    };
+  }, []);
+
+  const handlePayment = () => {
+    if (!product) return;
+
+    const options = {
+      key: 'rzp_test_YOUR_KEY_HERE', // Replace with your Razorpay test key
+      amount: product.price * 100, // Amount in paisa (multiply by 100)
+      currency: 'INR',
+      name: 'Verma Wisdom',
+      description: `Purchase ${product.name}`,
+      image: 'https://your-logo-url.com/logo.png', // Replace with your logo URL
+      handler: function (response: any) {
+        alert(`Payment successful! Payment ID: ${response.razorpay_payment_id}`);
+        // Here you would typically send the payment details to your backend
+      },
+      prefill: {
+        name: '',
+        email: '',
+        contact: ''
+      },
+      theme: {
+        color: '#0891b2'
+      }
+    };
+
+    const rzp = new window.Razorpay(options);
+    rzp.open();
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-cyan-50 to-indigo-50 dark:from-slate-900 dark:to-indigo-900">
@@ -110,9 +149,16 @@ export default function ProductDetail() {
               {product.fullDescription}
             </p>
 
-            <button className="w-full bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white py-3 px-6 rounded-lg font-semibold transition-colors duration-200">
-              Add to Cart
+            <button 
+              onClick={handlePayment}
+              className="w-full bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white py-3 px-6 rounded-lg font-semibold transition-colors duration-200"
+            >
+              Buy Now with Razorpay
             </button>
+            
+            <p className="text-sm text-gray-500 dark:text-gray-400 mt-4 text-center">
+              * Payment integration is in test mode. For production, configure your Razorpay account.
+            </p>
           </div>
         </div>
       </div>
