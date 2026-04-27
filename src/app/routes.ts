@@ -6,6 +6,8 @@ import { About } from "./pages/About";
 import { Contact } from "./pages/Contact";
 import { PersonalFinance } from "./pages/PersonalFinance";
 import { RetirementCalculator } from "./pages/RetirementCalculator";
+import { Ecommerce } from "./pages/Ecommerce";
+import { ProductDetail } from "./pages/ProductDetail";
 
 export const router = createBrowserRouter([
   {
@@ -35,5 +37,13 @@ export const router = createBrowserRouter([
   {
     path: "/retirement-calculator",
     Component: RetirementCalculator,
+  },
+  {
+    path: "/ecommerce",
+    Component: Ecommerce,
+  },
+  {
+    path: "/product/:id",
+    Component: ProductDetail,
   },
 ]);
