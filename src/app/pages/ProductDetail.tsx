@@ -1,20 +1,12 @@
 import { Link, useParams } from "react-router";
 import { ArrowLeft } from "lucide-react";
-import { useEffect } from "react";
-
-// Declare Razorpay types
-declare global {
-  interface Window {
-    Razorpay: any;
-  }
-}
 
 const products = [
   {
     id: 1,
     name: "Mountain Landscape Print",
-    price: 25,
-    image: "https://via.placeholder.com/400x300?text=Mountain+Landscape",
+    price: 2000,
+    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop",
     description: "A stunning handmade print of majestic mountains.",
     size: "8x10 inches",
     material: "High-quality paper, framed",
@@ -23,8 +15,8 @@ const products = [
   {
     id: 2,
     name: "Abstract Art Print",
-    price: 30,
-    image: "https://via.placeholder.com/400x300?text=Abstract+Art",
+    price: 2500,
+    image: "https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=400&h=300&fit=crop",
     description: "Modern abstract design with vibrant colors.",
     size: "11x14 inches",
     material: "Premium canvas, unframed",
@@ -33,8 +25,8 @@ const products = [
   {
     id: 3,
     name: "Cityscape Print",
-    price: 28,
-    image: "https://via.placeholder.com/400x300?text=Cityscape",
+    price: 2200,
+    image: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=400&h=300&fit=crop",
     description: "Urban skyline captured in intricate detail.",
     size: "10x12 inches",
     material: "Matte paper, framed",
@@ -43,8 +35,8 @@ const products = [
   {
     id: 4,
     name: "Ocean Wave Print",
-    price: 22,
-    image: "https://via.placeholder.com/400x300?text=Ocean+Wave",
+    price: 1800,
+    image: "https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=400&h=300&fit=crop",
     description: "Serene ocean waves in calming blues.",
     size: "9x11 inches",
     material: "Glossy paper, unframed",
@@ -56,49 +48,18 @@ export default function ProductDetail() {
   const { id } = useParams();
   const product = products.find(p => p.id === parseInt(id || "0"));
 
-  useEffect(() => {
-    // Load Razorpay script
-    const script = document.createElement('script');
-    script.src = 'https://checkout.razorpay.com/v1/checkout.js';
-    script.async = true;
-    document.body.appendChild(script);
-
-    return () => {
-      // Cleanup script on unmount
-      const existingScript = document.querySelector('script[src="https://checkout.razorpay.com/v1/checkout.js"]');
-      if (existingScript) {
-        document.body.removeChild(existingScript);
-      }
-    };
-  }, []);
-
-  const handlePayment = () => {
-    if (!product) return;
-
-    const options = {
-      key: 'rzp_test_YOUR_KEY_HERE', // Replace with your Razorpay test key
-      amount: product.price * 100, // Amount in paisa (multiply by 100)
-      currency: 'INR',
-      name: 'Verma Wisdom',
-      description: `Purchase ${product.name}`,
-      image: 'https://your-logo-url.com/logo.png', // Replace with your logo URL
-      handler: function (response: any) {
-        alert(`Payment successful! Payment ID: ${response.razorpay_payment_id}`);
-        // Here you would typically send the payment details to your backend
-      },
-      prefill: {
-        name: '',
-        email: '',
-        contact: ''
-      },
-      theme: {
-        color: '#0891b2'
-      }
-    };
-
-    const rzp = new window.Razorpay(options);
-    rzp.open();
-  };
+  if (!product) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-cyan-50 to-indigo-50 dark:from-slate-900 dark:to-indigo-900 flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Product Not Found</h1>
+          <Link to="/ecommerce" className="text-cyan-600 dark:text-cyan-400 hover:underline">
+            Back to Products
+          </Link>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-cyan-50 to-indigo-50 dark:from-slate-900 dark:to-indigo-900">
@@ -131,7 +92,7 @@ export default function ProductDetail() {
             </div>
 
             <div className="text-3xl font-bold text-cyan-600 dark:text-cyan-400">
-              ${product.price}
+              ₹{product.price}
             </div>
 
             <div className="space-y-3">
@@ -149,16 +110,9 @@ export default function ProductDetail() {
               {product.fullDescription}
             </p>
 
-            <button 
-              onClick={handlePayment}
-              className="w-full bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white py-3 px-6 rounded-lg font-semibold transition-colors duration-200"
-            >
-              Buy Now with Razorpay
+            <button className="w-full bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white py-3 px-6 rounded-lg font-semibold transition-colors duration-200">
+              Add to Cart
             </button>
-            
-            <p className="text-sm text-gray-500 dark:text-gray-400 mt-4 text-center">
-              * Payment integration is in test mode. For production, configure your Razorpay account.
-            </p>
           </div>
         </div>
       </div>
