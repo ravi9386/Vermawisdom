@@ -118,13 +118,10 @@
                 requiredCorpus = requiredCorpusNow;
             } else {
                 for (let age = currentAge; age <= 80; age++) {
-<<<<<<< HEAD
                     // Grow income and expenses for the next year
                     annualIncome = annualIncome * (1 + incomeGrowth);
                     annualExpense = annualExpense * (1 + inflation);
 
-=======
->>>>>>> 27f63776f3d130cc9973861ea778a33b6c5d89cf
                     const annualSavings = Math.max(annualIncome - annualExpense, 0);
                     corpus = corpus * (1 + preROI) + annualSavings;
 
@@ -142,12 +139,6 @@
                         retirementAge = age + 1;
                         break;
                     }
-<<<<<<< HEAD
-=======
-
-                    annualIncome = annualIncome * (1 + incomeGrowth);
-                    annualExpense = annualExpense * (1 + inflation);
->>>>>>> 27f63776f3d130cc9973861ea778a33b6c5d89cf
                 }
             }
 
