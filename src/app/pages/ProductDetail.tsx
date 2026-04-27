@@ -44,7 +44,7 @@ const products = [
   }
 ];
 
-export function ProductDetail() {
+export default function ProductDetail() {
   const { id } = useParams();
   const product = products.find(p => p.id === parseInt(id || "0"));
 

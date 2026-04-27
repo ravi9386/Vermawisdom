@@ -43,7 +43,7 @@ const products = [
   }
 ];
 
-export function Ecommerce() {
+export default function Ecommerce() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-cyan-50 to-indigo-50 dark:from-slate-900 dark:to-indigo-900">
       <div className="container mx-auto px-6 py-12">

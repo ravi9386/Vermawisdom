@@ -6,8 +6,8 @@ import { About } from "./pages/About";
 import { Contact } from "./pages/Contact";
 import { PersonalFinance } from "./pages/PersonalFinance";
 import { RetirementCalculator } from "./pages/RetirementCalculator";
-import { Ecommerce } from "./pages/Ecommerce";
-import { ProductDetail } from "./pages/ProductDetail";
+import Ecommerce from "./pages/Ecommerce";
+import ProductDetail from "./pages/ProductDetail";
 
 export const router = createBrowserRouter([
   {
