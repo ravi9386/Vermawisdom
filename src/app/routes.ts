@@ -39,7 +39,7 @@ export const router = createBrowserRouter([
     Component: RetirementCalculator,
   },
   {
-    path: "/ecommerce",
+    path: "/Ecommerce",
     Component: Ecommerce,
   },
   {

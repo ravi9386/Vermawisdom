@@ -1,48 +1,6 @@
 import { Link, useParams } from "react-router";
 import { ArrowLeft } from "lucide-react";
-
-const products = [
-  {
-    id: 1,
-    name: "Mountain Landscape Print",
-    price: 2000,
-    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop",
-    description: "A stunning handmade print of majestic mountains.",
-    size: "8x10 inches",
-    material: "High-quality paper, framed",
-    fullDescription: "This print captures the serene beauty of mountain peaks at dawn. Each print is handcrafted with care, ensuring unique variations in color and texture."
-  },
-  {
-    id: 2,
-    name: "Abstract Art Print",
-    price: 2500,
-    image: "https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=400&h=300&fit=crop",
-    description: "Modern abstract design with vibrant colors.",
-    size: "11x14 inches",
-    material: "Premium canvas, unframed",
-    fullDescription: "This piece features bold geometric shapes and a spectrum of colors. Hand-painted and printed for a unique, artistic touch."
-  },
-  {
-    id: 3,
-    name: "Cityscape Print",
-    price: 2200,
-    image: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=400&h=300&fit=crop",
-    description: "Urban skyline captured in intricate detail.",
-    size: "10x12 inches",
-    material: "Matte paper, framed",
-    fullDescription: "Detailed illustration of a bustling city at night. Perfect for office spaces or modern homes."
-  },
-  {
-    id: 4,
-    name: "Ocean Wave Print",
-    price: 1800,
-    image: "https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=400&h=300&fit=crop",
-    description: "Serene ocean waves in calming blues.",
-    size: "9x11 inches",
-    material: "Glossy paper, unframed",
-    fullDescription: "Gentle waves rolling onto the shore, captured in soft watercolor style. Ideal for bedrooms or relaxation spaces."
-  }
-];
+import { products } from "../store/productsStore";
 
 export default function ProductDetail() {
   const { id } = useParams();
@@ -53,7 +11,7 @@ export default function ProductDetail() {
       <div className="min-h-screen bg-gradient-to-br from-cyan-50 to-indigo-50 dark:from-slate-900 dark:to-indigo-900 flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Product Not Found</h1>
-          <Link to="/ecommerce" className="text-cyan-600 dark:text-cyan-400 hover:underline">
+          <Link to="/Ecommerce" className="text-cyan-600 dark:text-cyan-400 hover:underline">
             Back to Products
           </Link>
         </div>
@@ -65,7 +23,7 @@ export default function ProductDetail() {
     <div className="min-h-screen bg-gradient-to-br from-cyan-50 to-indigo-50 dark:from-slate-900 dark:to-indigo-900">
       <div className="container mx-auto px-6 py-12">
         <Link
-          to="/ecommerce"
+          to="/Ecommerce"
           className="inline-flex items-center gap-2 text-cyan-600 dark:text-cyan-400 hover:text-cyan-700 dark:hover:text-cyan-300 mb-8 transition-colors"
         >
           <ArrowLeft className="w-5 h-5" />
@@ -109,10 +67,6 @@ export default function ProductDetail() {
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
               {product.fullDescription}
             </p>
-
-            <button className="w-full bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white py-3 px-6 rounded-lg font-semibold transition-colors duration-200">
-              Add to Cart
-            </button>
           </div>
         </div>
       </div>

@@ -35,7 +35,7 @@ export function TopNavigation() {
           </Link>
 
           <Link
-            to="/ecommerce"
+            to="/Ecommerce"
             className="flex items-center gap-2 text-gray-700 dark:text-gray-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors font-medium"
           >
             <ShoppingCart className="w-5 h-5" />
