@@ -200,7 +200,7 @@ export function PersonalFinance() {
                     <li>• ELSS: Tax-saving with 3-year lock-in</li>
                     <li>• Index funds: Low-cost passive investing (Nifty 50, Sensex)</li>
                     <li>• Asset allocation: Mix large-cap, mid-cap, debt for diversification</li>
-                    <li>• Long-term equity (>1 year): 10% LTCG tax on gains above ₹1 lakh</li>
+                    <li>• Long-term equity (&gt;1 year): 10% LTCG tax on gains above ₹1 lakh</li>
                   </ul>
                 </div>
 
