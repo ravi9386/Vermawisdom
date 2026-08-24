@@ -126,7 +126,7 @@ export function PersonalFinance() {
             </p>
           </div>
         </div>
-        <span className="font-mono text-xs uppercase tracking-widest text-primary whitespace-nowrap">
+        <span className="text-xs font-semibold uppercase tracking-widest text-accent whitespace-nowrap">
           Try it →
         </span>
       </Link>
