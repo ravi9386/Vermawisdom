@@ -2,9 +2,9 @@ import { Link } from "react-router";
 
 const links = [
   { to: "/", label: "Home" },
+  { to: "/writing", label: "Writing" },
   { to: "/pf", label: "Personal Finance" },
-  { to: "/retirement-calculator", label: "Retirement" },
-  { to: "/Ecommerce", label: "Prints" },
+  { to: "/library", label: "Library" },
   { to: "/about", label: "About" },
   { to: "/contact", label: "Contact" },
 ];

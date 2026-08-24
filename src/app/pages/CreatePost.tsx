@@ -6,10 +6,7 @@ import { Input } from "../components/ui/input";
 import { Textarea } from "../components/ui/textarea";
 import { Label } from "../components/ui/label";
 import { ArrowLeft } from "lucide-react";
-import { TopNavigation } from "../components/TopNavigation";
-import { Sidebar } from "../components/Sidebar";
-import { Books } from "../components/Books";
-import { Footer } from "../components/Footer";
+import { PageShell } from "../components/PageShell";
 
 export function CreatePost() {
   const navigate = useNavigate();
@@ -34,24 +31,17 @@ export function CreatePost() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-muted">
-      <TopNavigation />
+    <PageShell maxWidth="max-w-4xl">
+      <Button
+        variant="ghost"
+        onClick={() => navigate("/writing")}
+        className="mb-6"
+      >
+        <ArrowLeft className="w-4 h-4 mr-2" />
+        Back to Writing
+      </Button>
 
-      <div className="flex flex-1">
-        <Sidebar />
-
-        <main className="flex-1 p-8">
-          <div className="max-w-4xl mx-auto">
-            <Button
-              variant="ghost"
-              onClick={() => navigate("/")}
-              className="mb-6"
-            >
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              Back
-            </Button>
-
-            <h1 className="text-3xl font-bold mb-8">Create New Post</h1>
+      <h1 className="font-display text-3xl text-foreground mb-8">Create New Post</h1>
 
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="bg-card p-6 border border-border rounded-lg">
@@ -94,17 +84,11 @@ export function CreatePost() {
 
               <div className="flex gap-3">
                 <Button type="submit">Publish Post</Button>
-                <Button type="button" variant="outline" onClick={() => navigate("/")}>
+                <Button type="button" variant="outline" onClick={() => navigate("/writing")}>
                   Cancel
                 </Button>
               </div>
             </form>
-          </div>
-        </main>
-        <Books />
-      </div>
-
-      <Footer />
-    </div>
+    </PageShell>
   );
 }

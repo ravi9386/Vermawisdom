@@ -1,8 +1,5 @@
 import { useState } from "react";
-import { TopNavigation } from "../components/TopNavigation";
-import { Sidebar } from "../components/Sidebar";
-import { Books } from "../components/Books";
-import { Footer } from "../components/Footer";
+import { PageShell } from "../components/PageShell";
 import { Mail, Phone, User, MessageSquare, Send } from "lucide-react";
 
 export function Contact() {
@@ -31,23 +28,19 @@ export function Contact() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-background">
-      <TopNavigation />
-
-      <div className="flex flex-1">
-        <Sidebar />
-
-        <main className="flex-1 p-8">
-          <div className="max-w-2xl mx-auto">
-            <div className="mb-8">
-              <h1 className="text-4xl font-bold font-display text-primary mb-4">
-                Get In Touch
-              </h1>
-              <div className="h-px w-16 bg-primary"></div>
-              <p className="mt-4 text-muted-foreground dark:text-muted-foreground">
-                Have a question or want to collaborate? Fill out the form and I'll get back to you.
-              </p>
-            </div>
+    <PageShell maxWidth="max-w-2xl">
+      <div className="mb-8">
+        <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-3">
+          05 / Contact
+        </p>
+        <h1 className="font-display text-4xl text-foreground mb-4">
+          Get In Touch
+        </h1>
+        <div className="h-px w-16 bg-primary"></div>
+        <p className="mt-4 text-muted-foreground dark:text-muted-foreground">
+          Have a question or want to collaborate? Fill out the form and I'll get back to you.
+        </p>
+      </div>
 
             {submitted ? (
               <div className="bg-accent-sage/10 border border-accent-sage/30 rounded-lg p-8 text-center">
@@ -138,13 +131,6 @@ export function Contact() {
                 </button>
               </form>
             )}
-          </div>
-        </main>
-
-        <Books />
-      </div>
-
-      <Footer />
-    </div>
+    </PageShell>
   );
 }

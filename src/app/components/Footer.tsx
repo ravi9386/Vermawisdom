@@ -19,13 +19,13 @@ export function Footer() {
             </h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link to="/" className="hover:text-primary transition-colors">Home</Link>
+                <Link to="/writing" className="hover:text-primary transition-colors">Writing</Link>
               </li>
               <li>
                 <Link to="/pf" className="hover:text-primary transition-colors">Personal Finance</Link>
               </li>
               <li>
-                <Link to="/retirement-calculator" className="hover:text-primary transition-colors">Retirement Calculator</Link>
+                <Link to="/library" className="hover:text-primary transition-colors">Library</Link>
               </li>
               <li>
                 <Link to="/about" className="hover:text-primary transition-colors">About</Link>

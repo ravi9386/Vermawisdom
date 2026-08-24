@@ -1,30 +1,20 @@
-import { TopNavigation } from "../components/TopNavigation";
-import { Sidebar } from "../components/Sidebar";
-import { Books } from "../components/Books";
-import { Footer } from "../components/Footer";
+import { PageShell } from "../components/PageShell";
 import { Briefcase, Target, Lightbulb, TrendingUp } from "lucide-react";
 
 export function About() {
   return (
-    <div className="min-h-screen flex flex-col bg-background">
-      <TopNavigation />
+    <PageShell maxWidth="max-w-4xl">
+      <div className="mb-8">
+        <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-3">
+          04 / About
+        </p>
+        <h1 className="font-display text-4xl text-foreground mb-4">
+          The person behind Verma Wisdom
+        </h1>
+        <div className="h-px w-16 bg-primary"></div>
+      </div>
 
-      <div className="flex flex-1">
-        <Sidebar />
-
-        <main className="flex-1 p-8">
-          <div className="max-w-4xl mx-auto">
-            <div className="mb-8">
-              <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-3">
-                04 / About
-              </p>
-              <h1 className="font-display text-4xl text-foreground mb-4">
-                The person behind Verma Wisdom
-              </h1>
-              <div className="h-px w-16 bg-primary"></div>
-            </div>
-
-            <div className="bg-card p-8 rounded-lg border border-border mb-8">
+      <div className="bg-card p-8 rounded-lg border border-border mb-8">
               <div className="flex items-center gap-3 mb-6">
                 <Briefcase className="w-6 h-6 text-primary" />
                 <h2 className="text-2xl font-display text-foreground">
@@ -89,18 +79,11 @@ export function About() {
                 </div>
 
                 <p className="text-lg font-medium text-foreground dark:text-white mt-6">
-                  I thrive in ambiguous situations, using hypotheses and experiments to learn fast. My focus is always on 
+                  I thrive in ambiguous situations, using hypotheses and experiments to learn fast. My focus is always on
                   moving from strategy to measurable impact.
                 </p>
               </div>
-            </div>
-          </div>
-        </main>
-
-        <Books />
       </div>
-
-      <Footer />
-    </div>
+    </PageShell>
   );
 }

@@ -1,18 +1,22 @@
 import { createBrowserRouter } from "react-router";
 import { Home } from "./pages/Home";
+import { Writing } from "./pages/Writing";
 import { CreatePost } from "./pages/CreatePost";
 import { BlogPost } from "./pages/BlogPost";
 import { About } from "./pages/About";
 import { Contact } from "./pages/Contact";
 import { PersonalFinance } from "./pages/PersonalFinance";
 import { RetirementCalculator } from "./pages/RetirementCalculator";
-import Ecommerce from "./pages/Ecommerce";
-import ProductDetail from "./pages/ProductDetail";
+import { Library } from "./pages/Library";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     Component: Home,
+  },
+  {
+    path: "/writing",
+    Component: Writing,
   },
   {
     path: "/create",
@@ -23,14 +27,6 @@ export const router = createBrowserRouter([
     Component: BlogPost,
   },
   {
-    path: "/about",
-    Component: About,
-  },
-  {
-    path: "/contact",
-    Component: Contact,
-  },
-  {
     path: "/pf",
     Component: PersonalFinance,
   },
@@ -39,11 +35,15 @@ export const router = createBrowserRouter([
     Component: RetirementCalculator,
   },
   {
-    path: "/Ecommerce",
-    Component: Ecommerce,
+    path: "/library",
+    Component: Library,
   },
   {
-    path: "/product/:id",
-    Component: ProductDetail,
+    path: "/about",
+    Component: About,
+  },
+  {
+    path: "/contact",
+    Component: Contact,
   },
 ]);

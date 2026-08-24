@@ -1,9 +1,7 @@
 import { useMemo, useState } from "react";
-import { TopNavigation } from "../components/TopNavigation";
-import { Sidebar } from "../components/Sidebar";
-import { Books } from "../components/Books";
-import { Footer } from "../components/Footer";
-import { Calculator, TrendingUp, CalendarClock, PiggyBank } from "lucide-react";
+import { Link } from "react-router";
+import { PageShell } from "../components/PageShell";
+import { ArrowLeft, Calculator, TrendingUp, CalendarClock, PiggyBank } from "lucide-react";
 
 type RiskProfile = "conservative" | "balanced" | "growth";
 
@@ -141,25 +139,32 @@ export function RetirementCalculator() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-background">
-      <TopNavigation />
-      <div className="flex flex-1">
-        <Sidebar />
-        <main className="flex-1 p-8">
-          <div className="max-w-5xl mx-auto space-y-6">
-            <div>
-              <h1 className="text-4xl font-bold font-display text-primary">
-                Retirement Calculator
-              </h1>
-              <p className="text-muted-foreground dark:text-muted-foreground mt-2">
-                Estimate your retirement age using income, expenses, inflation, and investment returns.
-              </p>
-            </div>
+    <PageShell maxWidth="max-w-5xl">
+      <div className="space-y-6">
+        <Link
+          to="/pf"
+          className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          Back to Personal Finance
+        </Link>
+
+        <div>
+          <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-3">
+            Personal Finance / Tool
+          </p>
+          <h1 className="font-display text-4xl text-foreground">
+            Retirement Calculator
+          </h1>
+          <p className="text-muted-foreground dark:text-muted-foreground mt-2">
+            Estimate your retirement age using income, expenses, inflation, and investment returns.
+          </p>
+        </div>
 
             <section className="bg-card dark:bg-slate-800 border border-border dark:border-cyan-700 rounded-lg p-6">
               <div className="flex items-center gap-2 mb-4">
                 <Calculator className="w-5 h-5 text-primary dark:text-primary" />
-                <h2 className="text-xl font-semibold text-foreground dark:text-gray-100">Your Inputs</h2>
+                <h2 className="font-display text-xl text-foreground">Your Inputs</h2>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 <label className="text-sm text-foreground/80 dark:text-muted-foreground">
@@ -251,7 +256,7 @@ export function RetirementCalculator() {
             </section>
 
             <section className="bg-card dark:bg-slate-800 border border-border dark:border-cyan-700 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-foreground dark:text-gray-100 mb-2">Interpretation</h3>
+              <h3 className="font-display text-lg text-foreground mb-2">Interpretation</h3>
               {result.recommendedRetirementAge ? (
                 <p className="text-foreground/80 dark:text-muted-foreground leading-relaxed">
                   Based on your current income, expenses, growth assumptions, ROI, and withdrawal strategy, you can target retirement around age <span className="font-semibold">{result.recommendedRetirementAge}</span>.
@@ -263,11 +268,7 @@ export function RetirementCalculator() {
                 </p>
               )}
             </section>
-          </div>
-        </main>
-        <Books />
       </div>
-      <Footer />
-    </div>
+    </PageShell>
   );
 }

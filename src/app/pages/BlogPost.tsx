@@ -6,10 +6,7 @@ import { Input } from "../components/ui/input";
 import { Textarea } from "../components/ui/textarea";
 import { Label } from "../components/ui/label";
 import { ArrowLeft } from "lucide-react";
-import { TopNavigation } from "../components/TopNavigation";
-import { Sidebar } from "../components/Sidebar";
-import { Books } from "../components/Books";
-import { Footer } from "../components/Footer";
+import { PageShell } from "../components/PageShell";
 
 export function BlogPost() {
   const { id } = useParams<{ id: string }>();
@@ -56,45 +53,29 @@ export function BlogPost() {
 
   if (!post) {
     return (
-      <div className="min-h-screen flex flex-col bg-muted">
-        <TopNavigation />
-        <div className="flex flex-1">
-          <Sidebar />
-          <main className="flex-1 p-8">
-            <div className="max-w-4xl mx-auto">
-              <p>Post not found</p>
-              <Button onClick={() => navigate("/")} className="mt-4">
-                Go Home
-              </Button>
-            </div>
-          </main>
-        </div>
-        <Footer />
-      </div>
+      <PageShell maxWidth="max-w-4xl">
+        <p>Post not found</p>
+        <Button onClick={() => navigate("/writing")} className="mt-4">
+          Back to Writing
+        </Button>
+      </PageShell>
     );
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-muted">
-      <TopNavigation />
-
-      <div className="flex flex-1">
-        <Sidebar />
-
-        <main className="flex-1 p-8">
-          <div className="max-w-4xl mx-auto">
-            <Button
-              variant="ghost"
-              onClick={() => navigate("/")}
-              className="mb-6"
-            >
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              Back
-            </Button>
+    <PageShell maxWidth="max-w-4xl">
+      <Button
+        variant="ghost"
+        onClick={() => navigate("/writing")}
+        className="mb-6"
+      >
+        <ArrowLeft className="w-4 h-4 mr-2" />
+        Back to Writing
+      </Button>
 
             {/* Blog Post */}
             <article className="bg-card p-8 border border-border mb-8 rounded-lg">
-              <h1 className="text-3xl font-bold mb-4">{post.title}</h1>
+              <h1 className="font-display text-3xl text-foreground mb-4">{post.title}</h1>
               <p className="text-muted-foreground text-sm mb-6">
                 By {post.author} • {post.createdAt.toLocaleDateString()}
               </p>
@@ -105,7 +86,7 @@ export function BlogPost() {
 
             {/* Comments Section */}
             <div className="bg-card p-8 border border-border rounded-lg">
-              <h2 className="text-2xl font-bold mb-6">Comments ({comments.length})</h2>
+              <h2 className="font-display text-2xl text-foreground mb-6">Comments ({comments.length})</h2>
 
               {/* Comment Form */}
               <form onSubmit={handleCommentSubmit} className="mb-8 pb-8 border-b border-border">
@@ -154,12 +135,6 @@ export function BlogPost() {
                 )}
               </div>
             </div>
-          </div>
-        </main>
-        <Books />
-      </div>
-
-      <Footer />
-    </div>
+    </PageShell>
   );
 }

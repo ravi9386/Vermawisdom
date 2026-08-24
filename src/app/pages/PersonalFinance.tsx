@@ -1,9 +1,7 @@
 import { useState, useEffect } from "react";
-import { TopNavigation } from "../components/TopNavigation";
-import { Sidebar } from "../components/Sidebar";
-import { Books } from "../components/Books";
-import { Footer } from "../components/Footer";
-import { TrendingUp, Newspaper, DollarSign, PiggyBank, BarChart3, Globe } from "lucide-react";
+import { Link } from "react-router";
+import { PageShell } from "../components/PageShell";
+import { TrendingUp, Newspaper, DollarSign, PiggyBank, BarChart3, Globe, Calculator } from "lucide-react";
 
 interface NewsItem {
   title: string;
@@ -100,23 +98,38 @@ export function PersonalFinance() {
   );
 
   return (
-    <div className="min-h-screen flex flex-col bg-background">
-      <TopNavigation />
+    <PageShell maxWidth="max-w-5xl">
+      {/* Header */}
+      <div className="mb-8">
+        <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-3">
+          02 / Personal Finance
+        </p>
+        <h1 className="font-display text-4xl text-foreground mb-2">
+          Personal Finance
+        </h1>
+        <p className="text-muted-foreground dark:text-muted-foreground">
+          Notes on wealth building, investments, and financial planning.
+        </p>
+      </div>
 
-      <div className="flex flex-1">
-        <Sidebar />
-
-        <main className="flex-1 p-8">
-          <div className="max-w-5xl mx-auto">
-            {/* Header */}
-            <div className="mb-8">
-              <h1 className="text-4xl font-bold font-display text-primary mb-2">
-                Personal Finance Hub
-              </h1>
-              <p className="text-muted-foreground dark:text-muted-foreground">
-                Your comprehensive guide to wealth building, investments, and financial planning
-              </p>
-            </div>
+      {/* Retirement Calculator callout */}
+      <Link
+        to="/retirement-calculator"
+        className="flex items-center justify-between gap-4 bg-muted p-6 rounded-lg border border-border hover:border-primary/50 transition-all mb-8"
+      >
+        <div className="flex items-center gap-4">
+          <Calculator className="w-6 h-6 text-primary flex-shrink-0" />
+          <div>
+            <h2 className="font-display text-lg text-foreground">Retirement Calculator</h2>
+            <p className="text-sm text-muted-foreground">
+              A tool I built for my own planning — income, expenses, ROI, and target retirement age.
+            </p>
+          </div>
+        </div>
+        <span className="font-mono text-xs uppercase tracking-widest text-primary whitespace-nowrap">
+          Try it →
+        </span>
+      </Link>
 
             {/* Latest News Section */}
             <section className="mb-8">
@@ -253,13 +266,6 @@ export function PersonalFinance() {
                 </div>
               </div>
             </section>
-          </div>
-        </main>
-
-        <Books />
-      </div>
-
-      <Footer />
-    </div>
+    </PageShell>
   );
 }
