@@ -56,7 +56,7 @@ export function BlogPost() {
 
   if (!post) {
     return (
-      <div className="min-h-screen flex flex-col bg-gray-50">
+      <div className="min-h-screen flex flex-col bg-muted">
         <TopNavigation />
         <div className="flex flex-1">
           <Sidebar />
@@ -75,7 +75,7 @@ export function BlogPost() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50">
+    <div className="min-h-screen flex flex-col bg-muted">
       <TopNavigation />
 
       <div className="flex flex-1">
@@ -93,22 +93,22 @@ export function BlogPost() {
             </Button>
 
             {/* Blog Post */}
-            <article className="bg-white p-8 border border-gray-200 mb-8 rounded-lg">
+            <article className="bg-card p-8 border border-border mb-8 rounded-lg">
               <h1 className="text-3xl font-bold mb-4">{post.title}</h1>
-              <p className="text-gray-600 text-sm mb-6">
+              <p className="text-muted-foreground text-sm mb-6">
                 By {post.author} • {post.createdAt.toLocaleDateString()}
               </p>
               <div className="prose max-w-none">
-                <p className="whitespace-pre-wrap text-gray-700">{post.content}</p>
+                <p className="whitespace-pre-wrap text-foreground/80">{post.content}</p>
               </div>
             </article>
 
             {/* Comments Section */}
-            <div className="bg-white p-8 border border-gray-200 rounded-lg">
+            <div className="bg-card p-8 border border-border rounded-lg">
               <h2 className="text-2xl font-bold mb-6">Comments ({comments.length})</h2>
 
               {/* Comment Form */}
-              <form onSubmit={handleCommentSubmit} className="mb-8 pb-8 border-b border-gray-200">
+              <form onSubmit={handleCommentSubmit} className="mb-8 pb-8 border-b border-border">
                 <div className="space-y-4">
                   <div>
                     <Label htmlFor="commentAuthor">Name</Label>
@@ -138,17 +138,17 @@ export function BlogPost() {
               {/* Comments List */}
               <div className="space-y-6">
                 {comments.length === 0 ? (
-                  <p className="text-gray-500">No comments yet. Be the first to comment!</p>
+                  <p className="text-muted-foreground">No comments yet. Be the first to comment!</p>
                 ) : (
                   comments.map((comment) => (
-                    <div key={comment.id} className="border-b border-gray-100 pb-4 last:border-0">
+                    <div key={comment.id} className="border-b border-border pb-4 last:border-0">
                       <div className="flex items-center gap-2 mb-2">
                         <span className="font-medium">{comment.author}</span>
-                        <span className="text-gray-500 text-sm">
+                        <span className="text-muted-foreground text-sm">
                           • {comment.createdAt.toLocaleDateString()}
                         </span>
                       </div>
-                      <p className="text-gray-700">{comment.content}</p>
+                      <p className="text-foreground/80">{comment.content}</p>
                     </div>
                   ))
                 )}

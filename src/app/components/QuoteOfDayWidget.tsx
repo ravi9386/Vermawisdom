@@ -37,10 +37,10 @@ export function QuoteOfDayWidget() {
 
   if (loading) {
     return (
-      <div className="bg-gradient-to-br from-orange-50 to-amber-50 dark:from-orange-900 dark:to-amber-900 p-6 rounded-lg border border-orange-200 dark:border-orange-700">
+      <div className="bg-muted p-6 rounded-lg border border-border">
         <div className="animate-pulse text-center">
-          <div className="h-4 bg-orange-300 rounded w-3/4 mx-auto mb-3"></div>
-          <div className="h-4 bg-orange-300 rounded w-1/2 mx-auto"></div>
+          <div className="h-4 bg-accent-gold rounded w-3/4 mx-auto mb-3"></div>
+          <div className="h-4 bg-accent-gold rounded w-1/2 mx-auto"></div>
         </div>
       </div>
     );
@@ -48,24 +48,24 @@ export function QuoteOfDayWidget() {
 
   if (!quote) {
     return (
-      <div className="bg-gradient-to-br from-orange-50 to-amber-50 dark:from-orange-900 dark:to-amber-900 p-6 rounded-lg border border-orange-200 dark:border-orange-700">
-        <p className="text-sm text-gray-600 dark:text-gray-300">Quote unavailable</p>
+      <div className="bg-muted p-6 rounded-lg border border-border">
+        <p className="text-sm text-muted-foreground dark:text-muted-foreground">Quote unavailable</p>
       </div>
     );
   }
 
   return (
-    <div className="bg-gradient-to-br from-orange-50 to-amber-50 dark:from-orange-900 dark:to-amber-900 p-6 rounded-lg border border-orange-200 dark:border-orange-700 shadow-md hover:shadow-lg transition-shadow">
+    <div className="bg-muted p-6 rounded-lg border border-border shadow-md hover:shadow-lg transition-shadow">
       <div className="flex items-start gap-4">
-        <Quote className="w-6 h-6 text-orange-400 flex-shrink-0 mt-1" />
+        <Quote className="w-6 h-6 text-accent-gold flex-shrink-0 mt-1" />
         <div className="flex-1">
-          <p className="text-xs font-semibold text-orange-600 dark:text-orange-300 uppercase tracking-wider mb-3">
+          <p className="text-xs font-semibold text-accent-gold dark:text-orange-300 uppercase tracking-wider mb-3">
             Quote of the Day
           </p>
-          <blockquote className="text-sm leading-relaxed text-gray-800 dark:text-gray-100 italic mb-4">
+          <blockquote className="text-sm leading-relaxed text-foreground dark:text-gray-100 italic mb-4">
             "{quote.text}"
           </blockquote>
-          <p className="text-xs font-semibold text-orange-600 dark:text-orange-300">
+          <p className="text-xs font-semibold text-accent-gold dark:text-orange-300">
             — {quote.author}
           </p>
         </div>
@@ -73,7 +73,7 @@ export function QuoteOfDayWidget() {
 
       <button
         onClick={fetchQuote}
-        className="mt-4 w-full flex items-center justify-center gap-2 p-2 rounded text-xs font-medium text-orange-700 dark:text-orange-300 hover:bg-orange-100 dark:hover:bg-orange-800 transition-colors"
+        className="mt-4 w-full flex items-center justify-center gap-2 p-2 rounded text-xs font-medium text-accent-gold dark:text-orange-300 hover:bg-card transition-colors"
       >
         <RefreshCw className="w-3 h-3" />
         New Quote

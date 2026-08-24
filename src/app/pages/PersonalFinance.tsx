@@ -78,18 +78,18 @@ export function PersonalFinance() {
       href={item.url} 
       target="_blank" 
       rel="noopener noreferrer"
-      className="block bg-white dark:bg-slate-800 p-4 rounded-lg border border-gray-200 dark:border-slate-700 hover:border-cyan-400 dark:hover:border-cyan-500 transition-all hover:shadow-md"
+      className="block bg-card dark:bg-slate-800 p-4 rounded-lg border border-border dark:border-slate-700 hover:border-primary/50 dark:hover:border-cyan-500 transition-all hover:shadow-md"
     >
       <div className="flex items-start gap-3">
-        <Newspaper className="w-5 h-5 text-cyan-600 dark:text-cyan-400 flex-shrink-0 mt-1" />
+        <Newspaper className="w-5 h-5 text-primary dark:text-primary flex-shrink-0 mt-1" />
         <div className="flex-1">
-          <h4 className="font-semibold text-gray-900 dark:text-white mb-1 line-clamp-2">
+          <h4 className="font-semibold text-foreground dark:text-white mb-1 line-clamp-2">
             {item.title}
           </h4>
-          <p className="text-sm text-gray-600 dark:text-gray-400 mb-2 line-clamp-2">
+          <p className="text-sm text-muted-foreground dark:text-muted-foreground mb-2 line-clamp-2">
             {item.description}
           </p>
-          <div className="flex items-center gap-3 text-xs text-gray-500 dark:text-gray-500">
+          <div className="flex items-center gap-3 text-xs text-muted-foreground dark:text-muted-foreground">
             <span>{item.source}</span>
             <span>•</span>
             <span>{new Date(item.publishedAt).toLocaleDateString()}</span>
@@ -100,7 +100,7 @@ export function PersonalFinance() {
   );
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-blue-50 via-purple-50 to-blue-50 dark:from-slate-900 dark:via-indigo-900 dark:to-slate-900">
+    <div className="min-h-screen flex flex-col bg-background">
       <TopNavigation />
 
       <div className="flex flex-1">
@@ -110,10 +110,10 @@ export function PersonalFinance() {
           <div className="max-w-5xl mx-auto">
             {/* Header */}
             <div className="mb-8">
-              <h1 className="text-4xl font-bold bg-gradient-to-r from-cyan-600 to-indigo-600 dark:from-cyan-400 dark:to-indigo-400 bg-clip-text text-transparent mb-2">
+              <h1 className="text-4xl font-bold font-display text-primary mb-2">
                 Personal Finance Hub
               </h1>
-              <p className="text-gray-600 dark:text-gray-400">
+              <p className="text-muted-foreground dark:text-muted-foreground">
                 Your comprehensive guide to wealth building, investments, and financial planning
               </p>
             </div>
@@ -121,14 +121,14 @@ export function PersonalFinance() {
             {/* Latest News Section */}
             <section className="mb-8">
               <div className="flex items-center gap-3 mb-4">
-                <Globe className="w-6 h-6 text-cyan-600 dark:text-cyan-400" />
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+                <Globe className="w-6 h-6 text-primary dark:text-primary" />
+                <h2 className="text-2xl font-display text-foreground">
                   Global Finance News
                 </h2>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
                 {loading ? (
-                  <div className="col-span-full text-center py-8 text-gray-500">Loading news...</div>
+                  <div className="col-span-full text-center py-8 text-muted-foreground">Loading news...</div>
                 ) : (
                   globalNews.map((item, idx) => <NewsCard key={idx} item={item} />)
                 )}
@@ -138,14 +138,14 @@ export function PersonalFinance() {
             {/* India Finance News */}
             <section className="mb-8">
               <div className="flex items-center gap-3 mb-4">
-                <TrendingUp className="w-6 h-6 text-indigo-600 dark:text-indigo-400" />
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+                <TrendingUp className="w-6 h-6 text-accent-teal dark:text-indigo-400" />
+                <h2 className="text-2xl font-display text-foreground">
                   India Finance News
                 </h2>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {loading ? (
-                  <div className="col-span-full text-center py-8 text-gray-500">Loading news...</div>
+                  <div className="col-span-full text-center py-8 text-muted-foreground">Loading news...</div>
                 ) : (
                   indiaNews.map((item, idx) => <NewsCard key={idx} item={item} />)
                 )}
@@ -154,18 +154,18 @@ export function PersonalFinance() {
 
             {/* Financial Topics Grid */}
             <section className="mb-8">
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+              <h2 className="text-2xl font-display text-foreground mb-6">
                 Financial Topics
               </h2>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* EPF */}
-                <div className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/30 dark:to-emerald-900/30 p-6 rounded-lg border border-green-200 dark:border-green-700">
+                <div className="bg-accent-sage/10 p-6 rounded-lg border border-accent-sage/20">
                   <div className="flex items-center gap-3 mb-4">
-                    <PiggyBank className="w-6 h-6 text-green-600 dark:text-green-400" />
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white">EPF (Employee Provident Fund)</h3>
+                    <PiggyBank className="w-6 h-6 text-accent-sage dark:text-green-400" />
+                    <h3 className="text-xl font-display text-foreground">EPF (Employee Provident Fund)</h3>
                   </div>
-                  <ul className="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+                  <ul className="space-y-2 text-sm text-foreground/80 dark:text-muted-foreground">
                     <li>• Current rate: 8.25% (2025-26)</li>
                     <li>• Combined contribution: 24% of basic salary (12% employee + 12% employer)</li>
                     <li>• Tax-free withdrawals after 5 continuous years</li>
@@ -175,12 +175,12 @@ export function PersonalFinance() {
                 </div>
 
                 {/* PPF */}
-                <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/30 dark:to-cyan-900/30 p-6 rounded-lg border border-blue-200 dark:border-blue-700">
+                <div className="bg-accent-teal/10 p-6 rounded-lg border border-accent-teal/20">
                   <div className="flex items-center gap-3 mb-4">
-                    <DollarSign className="w-6 h-6 text-blue-600 dark:text-blue-400" />
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white">PPF (Public Provident Fund)</h3>
+                    <DollarSign className="w-6 h-6 text-accent-teal" />
+                    <h3 className="text-xl font-display text-foreground">PPF (Public Provident Fund)</h3>
                   </div>
-                  <ul className="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+                  <ul className="space-y-2 text-sm text-foreground/80 dark:text-muted-foreground">
                     <li>• Current rate: 7.1% compounded annually</li>
                     <li>• 15-year lock-in with extension options</li>
                     <li>• Tax-free returns (EEE status)</li>
@@ -190,12 +190,12 @@ export function PersonalFinance() {
                 </div>
 
                 {/* Mutual Funds */}
-                <div className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/30 dark:to-pink-900/30 p-6 rounded-lg border border-purple-200 dark:border-purple-700">
+                <div className="bg-accent-plum/10 p-6 rounded-lg border border-accent-plum/20">
                   <div className="flex items-center gap-3 mb-4">
-                    <BarChart3 className="w-6 h-6 text-purple-600 dark:text-purple-400" />
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white">Mutual Funds</h3>
+                    <BarChart3 className="w-6 h-6 text-accent-plum dark:text-purple-400" />
+                    <h3 className="text-xl font-display text-foreground">Mutual Funds</h3>
                   </div>
-                  <ul className="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+                  <ul className="space-y-2 text-sm text-foreground/80 dark:text-muted-foreground">
                     <li>• SIP culture: ₹20,000+ crore monthly inflows</li>
                     <li>• ELSS: Tax-saving with 3-year lock-in</li>
                     <li>• Index funds: Low-cost passive investing (Nifty 50, Sensex)</li>
@@ -205,12 +205,12 @@ export function PersonalFinance() {
                 </div>
 
                 {/* Stocks */}
-                <div className="bg-gradient-to-br from-orange-50 to-amber-50 dark:from-orange-900/30 dark:to-amber-900/30 p-6 rounded-lg border border-orange-200 dark:border-orange-700">
+                <div className="bg-accent-gold/10 p-6 rounded-lg border border-accent-gold/20">
                   <div className="flex items-center gap-3 mb-4">
-                    <TrendingUp className="w-6 h-6 text-orange-600 dark:text-orange-400" />
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white">Direct Stocks</h3>
+                    <TrendingUp className="w-6 h-6 text-accent-gold dark:text-accent-gold" />
+                    <h3 className="text-xl font-display text-foreground">Direct Stocks</h3>
                   </div>
-                  <ul className="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+                  <ul className="space-y-2 text-sm text-foreground/80 dark:text-muted-foreground">
                     <li>• Higher potential returns vs. mutual funds (no expense ratio)</li>
                     <li>• Requires research: fundamentals, valuations, sector trends</li>
                     <li>• Diversification critical: 15-20 stocks across sectors</li>
@@ -222,33 +222,33 @@ export function PersonalFinance() {
             </section>
 
             {/* Key Principles */}
-            <section className="bg-gradient-to-r from-cyan-50 to-indigo-50 dark:from-cyan-900/20 dark:to-indigo-900/20 p-6 rounded-lg border border-cyan-200 dark:border-cyan-700">
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
+            <section className="bg-muted p-6 rounded-lg border border-border">
+              <h3 className="text-xl font-display text-foreground mb-4">
                 Core Personal Finance Principles
               </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-700 dark:text-gray-300">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-foreground/80 dark:text-muted-foreground">
                 <div>
-                  <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Start Early & Stay Consistent</h4>
+                  <h4 className="font-semibold text-foreground dark:text-white mb-2">Start Early & Stay Consistent</h4>
                   <p>Compound interest rewards time. Start SIPs/PPF early, automate contributions.</p>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Emergency Fund First</h4>
+                  <h4 className="font-semibold text-foreground dark:text-white mb-2">Emergency Fund First</h4>
                   <p>6-12 months expenses in liquid savings before aggressive investing.</p>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Diversify Across Assets</h4>
+                  <h4 className="font-semibold text-foreground dark:text-white mb-2">Diversify Across Assets</h4>
                   <p>Stocks, debt, gold, real estate—spread risk, optimize returns.</p>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Tax Optimization</h4>
+                  <h4 className="font-semibold text-foreground dark:text-white mb-2">Tax Optimization</h4>
                   <p>Use 80C (PPF, ELSS), NPS for 80CCD(1B), maximize deductions legally.</p>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Review & Rebalance Annually</h4>
+                  <h4 className="font-semibold text-foreground dark:text-white mb-2">Review & Rebalance Annually</h4>
                   <p>Life changes, markets shift. Annual review keeps goals aligned.</p>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Avoid Debt for Consumption</h4>
+                  <h4 className="font-semibold text-foreground dark:text-white mb-2">Avoid Debt for Consumption</h4>
                   <p>Credit cards, personal loans for lifestyle = wealth destroyer. Use for assets only.</p>
                 </div>
               </div>

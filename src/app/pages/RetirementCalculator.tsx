@@ -141,74 +141,74 @@ export function RetirementCalculator() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-blue-50 via-purple-50 to-blue-50 dark:from-slate-900 dark:via-indigo-900 dark:to-slate-900">
+    <div className="min-h-screen flex flex-col bg-background">
       <TopNavigation />
       <div className="flex flex-1">
         <Sidebar />
         <main className="flex-1 p-8">
           <div className="max-w-5xl mx-auto space-y-6">
             <div>
-              <h1 className="text-4xl font-bold bg-gradient-to-r from-cyan-600 to-indigo-600 dark:from-cyan-400 dark:to-indigo-400 bg-clip-text text-transparent">
+              <h1 className="text-4xl font-bold font-display text-primary">
                 Retirement Calculator
               </h1>
-              <p className="text-gray-600 dark:text-gray-400 mt-2">
+              <p className="text-muted-foreground dark:text-muted-foreground mt-2">
                 Estimate your retirement age using income, expenses, inflation, and investment returns.
               </p>
             </div>
 
-            <section className="bg-white dark:bg-slate-800 border border-cyan-200 dark:border-cyan-700 rounded-lg p-6">
+            <section className="bg-card dark:bg-slate-800 border border-border dark:border-cyan-700 rounded-lg p-6">
               <div className="flex items-center gap-2 mb-4">
-                <Calculator className="w-5 h-5 text-cyan-600 dark:text-cyan-400" />
-                <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100">Your Inputs</h2>
+                <Calculator className="w-5 h-5 text-primary dark:text-primary" />
+                <h2 className="text-xl font-semibold text-foreground dark:text-gray-100">Your Inputs</h2>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                <label className="text-sm text-gray-700 dark:text-gray-300">
+                <label className="text-sm text-foreground/80 dark:text-muted-foreground">
                   Current Age
-                  <input type="number" value={currentAge} onChange={(e) => setCurrentAge(Number(e.target.value))} className="mt-1 w-full rounded border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-900 px-3 py-2" />
+                  <input type="number" value={currentAge} onChange={(e) => setCurrentAge(Number(e.target.value))} className="mt-1 w-full rounded border border-border dark:border-slate-600 bg-card dark:bg-slate-900 px-3 py-2" />
                 </label>
-                <label className="text-sm text-gray-700 dark:text-gray-300">
+                <label className="text-sm text-foreground/80 dark:text-muted-foreground">
                   Life Expectancy
-                  <input type="number" value={lifeExpectancy} onChange={(e) => setLifeExpectancy(Number(e.target.value))} className="mt-1 w-full rounded border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-900 px-3 py-2" />
+                  <input type="number" value={lifeExpectancy} onChange={(e) => setLifeExpectancy(Number(e.target.value))} className="mt-1 w-full rounded border border-border dark:border-slate-600 bg-card dark:bg-slate-900 px-3 py-2" />
                 </label>
-                <label className="text-sm text-gray-700 dark:text-gray-300">
+                <label className="text-sm text-foreground/80 dark:text-muted-foreground">
                   Current Savings (₹)
-                  <input type="number" value={currentSavings} onChange={(e) => setCurrentSavings(Number(e.target.value))} className="mt-1 w-full rounded border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-900 px-3 py-2" />
+                  <input type="number" value={currentSavings} onChange={(e) => setCurrentSavings(Number(e.target.value))} className="mt-1 w-full rounded border border-border dark:border-slate-600 bg-card dark:bg-slate-900 px-3 py-2" />
                 </label>
-                <label className="text-sm text-gray-700 dark:text-gray-300">
+                <label className="text-sm text-foreground/80 dark:text-muted-foreground">
                   Monthly Income (₹)
-                  <input type="number" value={monthlyIncome} onChange={(e) => setMonthlyIncome(Number(e.target.value))} className="mt-1 w-full rounded border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-900 px-3 py-2" />
+                  <input type="number" value={monthlyIncome} onChange={(e) => setMonthlyIncome(Number(e.target.value))} className="mt-1 w-full rounded border border-border dark:border-slate-600 bg-card dark:bg-slate-900 px-3 py-2" />
                 </label>
-                <label className="text-sm text-gray-700 dark:text-gray-300">
+                <label className="text-sm text-foreground/80 dark:text-muted-foreground">
                   Monthly Expense (₹)
-                  <input type="number" value={monthlyExpense} onChange={(e) => setMonthlyExpense(Number(e.target.value))} className="mt-1 w-full rounded border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-900 px-3 py-2" />
+                  <input type="number" value={monthlyExpense} onChange={(e) => setMonthlyExpense(Number(e.target.value))} className="mt-1 w-full rounded border border-border dark:border-slate-600 bg-card dark:bg-slate-900 px-3 py-2" />
                 </label>
-                <label className="text-sm text-gray-700 dark:text-gray-300">
+                <label className="text-sm text-foreground/80 dark:text-muted-foreground">
                   Income Growth (% / year)
-                  <input type="number" step="0.1" value={incomeGrowthRate * 100} onChange={(e) => setIncomeGrowthRate(Number(e.target.value) / 100)} className="mt-1 w-full rounded border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-900 px-3 py-2" />
+                  <input type="number" step="0.1" value={incomeGrowthRate * 100} onChange={(e) => setIncomeGrowthRate(Number(e.target.value) / 100)} className="mt-1 w-full rounded border border-border dark:border-slate-600 bg-card dark:bg-slate-900 px-3 py-2" />
                 </label>
-                <label className="text-sm text-gray-700 dark:text-gray-300">
+                <label className="text-sm text-foreground/80 dark:text-muted-foreground">
                   Inflation (% / year)
-                  <input type="number" step="0.1" value={inflationRate * 100} onChange={(e) => setInflationRate(Number(e.target.value) / 100)} className="mt-1 w-full rounded border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-900 px-3 py-2" />
+                  <input type="number" step="0.1" value={inflationRate * 100} onChange={(e) => setInflationRate(Number(e.target.value) / 100)} className="mt-1 w-full rounded border border-border dark:border-slate-600 bg-card dark:bg-slate-900 px-3 py-2" />
                 </label>
-                <label className="text-sm text-gray-700 dark:text-gray-300">
+                <label className="text-sm text-foreground/80 dark:text-muted-foreground">
                   Pre-Retirement ROI (% / year)
-                  <input type="number" step="0.1" value={preRetirementRoi * 100} onChange={(e) => setPreRetirementRoi(Number(e.target.value) / 100)} className="mt-1 w-full rounded border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-900 px-3 py-2" />
+                  <input type="number" step="0.1" value={preRetirementRoi * 100} onChange={(e) => setPreRetirementRoi(Number(e.target.value) / 100)} className="mt-1 w-full rounded border border-border dark:border-slate-600 bg-card dark:bg-slate-900 px-3 py-2" />
                 </label>
-                <label className="text-sm text-gray-700 dark:text-gray-300">
+                <label className="text-sm text-foreground/80 dark:text-muted-foreground">
                   Post-Retirement ROI (% / year)
-                  <input type="number" step="0.1" value={postRetirementRoi * 100} onChange={(e) => setPostRetirementRoi(Number(e.target.value) / 100)} className="mt-1 w-full rounded border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-900 px-3 py-2" />
+                  <input type="number" step="0.1" value={postRetirementRoi * 100} onChange={(e) => setPostRetirementRoi(Number(e.target.value) / 100)} className="mt-1 w-full rounded border border-border dark:border-slate-600 bg-card dark:bg-slate-900 px-3 py-2" />
                 </label>
-                <label className="text-sm text-gray-700 dark:text-gray-300">
+                <label className="text-sm text-foreground/80 dark:text-muted-foreground">
                   Safe Withdrawal Rate (% / year)
-                  <input type="number" step="0.1" value={withdrawalRate * 100} onChange={(e) => setWithdrawalRate(Number(e.target.value) / 100)} className="mt-1 w-full rounded border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-900 px-3 py-2" />
+                  <input type="number" step="0.1" value={withdrawalRate * 100} onChange={(e) => setWithdrawalRate(Number(e.target.value) / 100)} className="mt-1 w-full rounded border border-border dark:border-slate-600 bg-card dark:bg-slate-900 px-3 py-2" />
                 </label>
-                <label className="text-sm text-gray-700 dark:text-gray-300">
+                <label className="text-sm text-foreground/80 dark:text-muted-foreground">
                   Retirement Expense Level (% of current)
-                  <input type="number" step="1" value={retirementExpenseRatio * 100} onChange={(e) => setRetirementExpenseRatio(Number(e.target.value) / 100)} className="mt-1 w-full rounded border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-900 px-3 py-2" />
+                  <input type="number" step="1" value={retirementExpenseRatio * 100} onChange={(e) => setRetirementExpenseRatio(Number(e.target.value) / 100)} className="mt-1 w-full rounded border border-border dark:border-slate-600 bg-card dark:bg-slate-900 px-3 py-2" />
                 </label>
-                <label className="text-sm text-gray-700 dark:text-gray-300">
+                <label className="text-sm text-foreground/80 dark:text-muted-foreground">
                   ROI Profile
-                  <select value={riskProfile} onChange={(e) => applyRiskProfile(e.target.value as RiskProfile)} className="mt-1 w-full rounded border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-900 px-3 py-2">
+                  <select value={riskProfile} onChange={(e) => applyRiskProfile(e.target.value as RiskProfile)} className="mt-1 w-full rounded border border-border dark:border-slate-600 bg-card dark:bg-slate-900 px-3 py-2">
                     <option value="conservative">Conservative</option>
                     <option value="balanced">Balanced</option>
                     <option value="growth">Growth</option>
@@ -218,47 +218,47 @@ export function RetirementCalculator() {
             </section>
 
             <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-              <div className="bg-white dark:bg-slate-800 border border-cyan-200 dark:border-cyan-700 rounded-lg p-4">
-                <div className="flex items-center gap-2 mb-2 text-cyan-600 dark:text-cyan-400">
+              <div className="bg-card dark:bg-slate-800 border border-border dark:border-cyan-700 rounded-lg p-4">
+                <div className="flex items-center gap-2 mb-2 text-primary dark:text-primary">
                   <CalendarClock className="w-4 h-4" />
                   <span className="text-sm font-medium">Recommended Retirement Age</span>
                 </div>
-                <p className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+                <p className="text-2xl font-bold text-foreground dark:text-gray-100">
                   {result.recommendedRetirementAge ?? "80+"}
                 </p>
               </div>
-              <div className="bg-white dark:bg-slate-800 border border-cyan-200 dark:border-cyan-700 rounded-lg p-4">
-                <div className="flex items-center gap-2 mb-2 text-indigo-600 dark:text-indigo-400">
+              <div className="bg-card dark:bg-slate-800 border border-border dark:border-cyan-700 rounded-lg p-4">
+                <div className="flex items-center gap-2 mb-2 text-accent-teal dark:text-indigo-400">
                   <PiggyBank className="w-4 h-4" />
                   <span className="text-sm font-medium">Required Corpus</span>
                 </div>
-                <p className="text-2xl font-bold text-gray-900 dark:text-gray-100">{formatINR(result.requiredCorpusAtRetirement)}</p>
+                <p className="text-2xl font-bold text-foreground dark:text-gray-100">{formatINR(result.requiredCorpusAtRetirement)}</p>
               </div>
-              <div className="bg-white dark:bg-slate-800 border border-cyan-200 dark:border-cyan-700 rounded-lg p-4">
-                <div className="flex items-center gap-2 mb-2 text-orange-600 dark:text-orange-400">
+              <div className="bg-card dark:bg-slate-800 border border-border dark:border-cyan-700 rounded-lg p-4">
+                <div className="flex items-center gap-2 mb-2 text-accent-gold dark:text-accent-gold">
                   <TrendingUp className="w-4 h-4" />
                   <span className="text-sm font-medium">Annual Savings Today</span>
                 </div>
-                <p className="text-2xl font-bold text-gray-900 dark:text-gray-100">{formatINR(result.annualSavingsNow)}</p>
+                <p className="text-2xl font-bold text-foreground dark:text-gray-100">{formatINR(result.annualSavingsNow)}</p>
               </div>
-              <div className="bg-white dark:bg-slate-800 border border-cyan-200 dark:border-cyan-700 rounded-lg p-4">
-                <div className="flex items-center gap-2 mb-2 text-green-600 dark:text-green-400">
+              <div className="bg-card dark:bg-slate-800 border border-border dark:border-cyan-700 rounded-lg p-4">
+                <div className="flex items-center gap-2 mb-2 text-accent-sage dark:text-green-400">
                   <Calculator className="w-4 h-4" />
                   <span className="text-sm font-medium">Current Savings Rate</span>
                 </div>
-                <p className="text-2xl font-bold text-gray-900 dark:text-gray-100">{toPercent(result.savingsRate)}</p>
+                <p className="text-2xl font-bold text-foreground dark:text-gray-100">{toPercent(result.savingsRate)}</p>
               </div>
             </section>
 
-            <section className="bg-white dark:bg-slate-800 border border-cyan-200 dark:border-cyan-700 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">Interpretation</h3>
+            <section className="bg-card dark:bg-slate-800 border border-border dark:border-cyan-700 rounded-lg p-6">
+              <h3 className="text-lg font-semibold text-foreground dark:text-gray-100 mb-2">Interpretation</h3>
               {result.recommendedRetirementAge ? (
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                <p className="text-foreground/80 dark:text-muted-foreground leading-relaxed">
                   Based on your current income, expenses, growth assumptions, ROI, and withdrawal strategy, you can target retirement around age <span className="font-semibold">{result.recommendedRetirementAge}</span>.
                   {result.yearsLeft !== null ? ` That gives you approximately ${result.yearsLeft} years to prepare.` : ""}
                 </p>
               ) : (
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                <p className="text-foreground/80 dark:text-muted-foreground leading-relaxed">
                   Under current assumptions, retirement before age 80 is unlikely. You can improve feasibility by increasing savings, reducing expense inflation, or improving long-term ROI through disciplined asset allocation.
                 </p>
               )}

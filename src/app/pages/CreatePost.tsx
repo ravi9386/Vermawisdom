@@ -34,7 +34,7 @@ export function CreatePost() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50">
+    <div className="min-h-screen flex flex-col bg-muted">
       <TopNavigation />
 
       <div className="flex flex-1">
@@ -54,7 +54,7 @@ export function CreatePost() {
             <h1 className="text-3xl font-bold mb-8">Create New Post</h1>
 
             <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="bg-white p-6 border border-gray-200 rounded-lg">
+              <div className="bg-card p-6 border border-border rounded-lg">
                 <div className="space-y-4">
                   <div>
                     <Label htmlFor="author">Author Name</Label>

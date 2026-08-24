@@ -8,10 +8,10 @@ export default function ProductDetail() {
 
   if (!product) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-cyan-50 to-indigo-50 dark:from-slate-900 dark:to-indigo-900 flex items-center justify-center">
+      <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Product Not Found</h1>
-          <Link to="/Ecommerce" className="text-cyan-600 dark:text-cyan-400 hover:underline">
+          <h1 className="text-2xl font-display text-foreground mb-4">Product Not Found</h1>
+          <Link to="/Ecommerce" className="text-primary dark:text-primary hover:underline">
             Back to Products
           </Link>
         </div>
@@ -20,18 +20,18 @@ export default function ProductDetail() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-cyan-50 to-indigo-50 dark:from-slate-900 dark:to-indigo-900">
+    <div className="min-h-screen bg-background">
       <div className="container mx-auto px-6 py-12">
         <Link
           to="/Ecommerce"
-          className="inline-flex items-center gap-2 text-cyan-600 dark:text-cyan-400 hover:text-cyan-700 dark:hover:text-cyan-300 mb-8 transition-colors"
+          className="inline-flex items-center gap-2 text-primary dark:text-primary hover:text-accent mb-8 transition-colors"
         >
           <ArrowLeft className="w-5 h-5" />
           Back to Products
         </Link>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg overflow-hidden">
+          <div className="bg-card rounded-xl shadow-lg overflow-hidden">
             <img
               src={product.image}
               alt={product.name}
@@ -41,30 +41,30 @@ export default function ProductDetail() {
 
           <div className="space-y-6">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+              <h1 className="text-3xl font-display text-foreground mb-4">
                 {product.name}
               </h1>
-              <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
+              <p className="text-lg text-muted-foreground dark:text-muted-foreground mb-6">
                 {product.description}
               </p>
             </div>
 
-            <div className="text-3xl font-bold text-cyan-600 dark:text-cyan-400">
+            <div className="text-3xl font-bold text-primary dark:text-primary">
               ₹{product.price}
             </div>
 
             <div className="space-y-3">
               <div className="flex justify-between">
-                <span className="font-semibold text-gray-900 dark:text-white">Size:</span>
-                <span className="text-gray-600 dark:text-gray-300">{product.size}</span>
+                <span className="font-semibold text-foreground dark:text-white">Size:</span>
+                <span className="text-muted-foreground dark:text-muted-foreground">{product.size}</span>
               </div>
               <div className="flex justify-between">
-                <span className="font-semibold text-gray-900 dark:text-white">Material:</span>
-                <span className="text-gray-600 dark:text-gray-300">{product.material}</span>
+                <span className="font-semibold text-foreground dark:text-white">Material:</span>
+                <span className="text-muted-foreground dark:text-muted-foreground">{product.material}</span>
               </div>
             </div>
 
-            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+            <p className="text-foreground/80 dark:text-muted-foreground leading-relaxed">
               {product.fullDescription}
             </p>
           </div>
