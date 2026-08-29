@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router";
 import { PageShell } from "../components/PageShell";
+import { AssetTracker } from "../components/AssetTracker";
 import { TrendingUp, Newspaper, DollarSign, PiggyBank, BarChart3, Globe, Calculator } from "lucide-react";
 
 interface NewsItem {
@@ -130,6 +131,8 @@ export function PersonalFinance() {
           Try it →
         </span>
       </Link>
+
+      <AssetTracker />
 
             {/* Latest News Section */}
             <section className="mb-8">
