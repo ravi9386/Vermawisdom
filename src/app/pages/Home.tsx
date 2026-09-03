@@ -59,18 +59,25 @@ export function Home() {
         {/* Credibility strip */}
         <Reveal>
           <section className="border-t border-b border-border bg-muted px-6 py-12">
-            <div className="max-w-3xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
+            <div className="max-w-3xl mx-auto flex flex-col items-center gap-6 text-center">
               <div>
                 <p className="font-display text-4xl text-primary mb-1">17+</p>
                 <p className="text-sm text-muted-foreground">Years in Consulting</p>
               </div>
-              <div>
-                <p className="font-display text-lg text-primary mb-1">Digital Commerce</p>
-                <p className="text-sm text-muted-foreground">&amp; Generative AI</p>
-              </div>
-              <div>
-                <p className="font-display text-lg text-primary mb-1">Speaker</p>
-                <p className="text-sm text-muted-foreground">IIT Naya Raipur &middot; Digital Confex Delhi</p>
+              <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2">
+                {[
+                  "Digital Commerce & Generative AI",
+                  "Personal Finance Enthusiast",
+                  "Mentor",
+                  "Father",
+                ].map((tag) => (
+                  <span
+                    key={tag}
+                    className="text-sm font-medium text-foreground/80 bg-card border border-border rounded-full px-4 py-1.5"
+                  >
+                    {tag}
+                  </span>
+                ))}
               </div>
             </div>
           </section>
