@@ -5,8 +5,8 @@ import { CreatePost } from "./pages/CreatePost";
 import { BlogPost } from "./pages/BlogPost";
 import { About } from "./pages/About";
 import { Contact } from "./pages/Contact";
+import { Experiments } from "./pages/Experiments";
 import { PersonalFinance } from "./pages/PersonalFinance";
-import { RetirementCalculator } from "./pages/RetirementCalculator";
 import { Library } from "./pages/Library";
 
 export const router = createBrowserRouter([
@@ -27,12 +27,12 @@ export const router = createBrowserRouter([
     Component: BlogPost,
   },
   {
-    path: "/pf",
-    Component: PersonalFinance,
+    path: "/experiments",
+    Component: Experiments,
   },
   {
-    path: "/retirement-calculator",
-    Component: RetirementCalculator,
+    path: "/experiments/personal-finance",
+    Component: PersonalFinance,
   },
   {
     path: "/library",

@@ -22,7 +22,7 @@ export function Footer() {
                 <Link to="/writing" className="hover:text-primary transition-colors">Writing</Link>
               </li>
               <li>
-                <Link to="/pf" className="hover:text-primary transition-colors">Personal Finance</Link>
+                <Link to="/experiments" className="hover:text-primary transition-colors">Experiments</Link>
               </li>
               <li>
                 <Link to="/library" className="hover:text-primary transition-colors">Library</Link>
