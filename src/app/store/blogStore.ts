@@ -68,6 +68,12 @@ class BlogStore {
     return newPost;
   }
 
+  deletePost(id: string) {
+    this.posts = this.posts.filter(p => p.id !== id);
+    this.comments = this.comments.filter(c => c.postId !== id);
+    this.notify();
+  }
+
   getComments(postId: string): Comment[] {
     return this.comments
       .filter(c => c.postId === postId)
