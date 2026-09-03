@@ -79,9 +79,10 @@ export function BlogPost() {
               <p className="text-muted-foreground text-sm mb-6">
                 By {post.author} • {post.createdAt.toLocaleDateString()}
               </p>
-              <div className="prose max-w-none">
-                <p className="whitespace-pre-wrap text-foreground/80">{post.content}</p>
-              </div>
+              <div
+                className="post-content whitespace-pre-wrap text-foreground/80"
+                dangerouslySetInnerHTML={{ __html: post.content }}
+              />
             </article>
 
             {/* Comments Section */}

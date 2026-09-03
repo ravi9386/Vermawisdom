@@ -14,3 +14,28 @@ html, body {
   flex-direction: column;
   min-height: 100vh;
 }
+
+/* Rich post content — both the live editor (RichTextEditor) and the
+   rendered post detail page (BlogPost) share this class. */
+.post-content[contenteditable]:empty:before {
+  content: attr(data-placeholder);
+  color: var(--muted-foreground);
+  pointer-events: none;
+}
+
+.post-content p {
+  margin: 0 0 1rem 0;
+}
+
+.post-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  margin: 1rem 0;
+  display: block;
+}
+
+.post-content b,
+.post-content strong {
+  font-weight: 700;
+}

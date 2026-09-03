@@ -4,6 +4,7 @@ import { blogStore, BlogPost } from "../store/blogStore";
 import { Button } from "../components/ui/button";
 import { PlusCircle, Trash2 } from "lucide-react";
 import { PageShell } from "../components/PageShell";
+import { stripHtml } from "../lib/html";
 
 export function Writing() {
   const [posts, setPosts] = useState<BlogPost[]>(blogStore.getPosts());
@@ -60,7 +61,7 @@ export function Writing() {
               <p className="text-muted-foreground text-sm mb-2">
                 By {post.author} • {post.createdAt.toLocaleDateString()}
               </p>
-              <p className="text-foreground/80 line-clamp-2">{post.content}</p>
+              <p className="text-foreground/80 line-clamp-2">{stripHtml(post.content)}</p>
             </Link>
             <button
               onClick={(e) => handleDelete(e, post.id, post.title)}
