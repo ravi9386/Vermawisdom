@@ -38,7 +38,7 @@ export function Home() {
 
   return (
     <PageShell maxWidth="max-w-5xl">
-      <section className="relative text-center pt-16 pb-20 -mx-6 px-6 overflow-hidden">
+      <section className="relative text-center pt-6 pb-20 -mx-6 px-6 overflow-hidden">
         <div
           aria-hidden
           className="absolute inset-0 -z-10"
@@ -48,9 +48,6 @@ export function Home() {
             backgroundSize: "100% 100%, 24px 24px",
           }}
         />
-        <p className="text-sm font-semibold uppercase tracking-widest text-accent mb-5">
-          Ravi Verma · Digital Transformation Leader
-        </p>
         <h1 className="font-display text-4xl md:text-5xl text-primary leading-tight mb-6 text-balance max-w-3xl mx-auto">
           Digital transformation at the intersection of commerce and generative AI.
         </h1>
